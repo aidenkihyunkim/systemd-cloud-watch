@@ -1,7 +1,7 @@
 package main
 
 import (
-	j "github.com/advantageous/systemd-cloud-watch/cloud-watch"
+	j "github.com/castlery/systemd-cloud-watch/cloud-watch"
 
 	"time"
 )

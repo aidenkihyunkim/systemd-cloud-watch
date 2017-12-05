@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+
+# Normalize to working directory being build root (up one level from ./scripts)
+ROOT=$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )
+cd "${ROOT}"
+
+source ./scripts/shared_env
+
+go generate -x $(go list ./ecr-login/... | grep -v '/vendor/')

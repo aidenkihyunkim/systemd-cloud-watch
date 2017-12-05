@@ -1,0 +1,7 @@
+FROM golang:1.9
+
+WORKDIR /go/src/github.com/castlery/systemd-cloud-watch
+
+COPY . .
+
+CMD make
