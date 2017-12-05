@@ -11,7 +11,6 @@
 # distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
 # ANY KIND, either express or implied. See the License for the specific
 # language governing permissions and limitations under the License.
-
 # Normalize to working directory being build root (up one level from ./scripts)
 ROOT=$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )
 cd "${ROOT}"
@@ -26,11 +25,10 @@ mkdir -p $1
 #trap "cd \"${ROOT}\"; mv ecs-cli/modules/version/_version.go ecs-cli/modules/version/version.go" EXIT SIGHUP SIGINT SIGTERM
 
 #cd ./ecs-cli/modules/version/
-#go run gen/version-gen.go
+#go run gen/version-gen.go 
 
 cd "${ROOT}"
 
-GOOS=$TARGET_GOOS GOARCH=$TARGET_GOARCH CGO_ENABLED=0 \
-       	go build -installsuffix cgo -a -ldflags '-s' \
-       	-o $1/systemd-cloud-watch \
-	./
+GOOS=$TARGET_GOOS GOARCH=$TARGET_GOARCH \
+       	go build -a -ldflags '-s' \
+       	-o $1/systemd-cloud-watch ./

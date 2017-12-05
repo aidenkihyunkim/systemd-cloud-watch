@@ -2,9 +2,9 @@ package main
 
 import (
 	"flag"
-	"os"
-	jcw "cloud-watch"
 	lg "github.com/advantageous/go-logback/logging"
+	jcw "github.com/castlery/systemd-cloud-watch/cloud-watch"
+	"os"
 )
 
 var help = flag.Bool("help", false, "set to true to show this help")

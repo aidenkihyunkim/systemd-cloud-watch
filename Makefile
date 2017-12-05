@@ -12,7 +12,7 @@ DARWIN_AMD64_BINARY=bin/darwin-amd64/$(BINARY_NAME)
 WINDOWS_AMD64_BINARY=bin/windows-amd64/$(BINARY_NAME).exe
 
 .PHONY: docker
-docker: Dockerfile
+docker: Dockerfile-build
 	docker run --rm \
 	-e TARGET_GOOS=$(TARGET_GOOS) \
 	-e TARGET_GOARCH=$(TARGET_GOARCH) \
