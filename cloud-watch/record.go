@@ -1,10 +1,10 @@
 package cloud_watch
 
 import (
+	lg "github.com/advantageous/go-logback/logging"
 	"reflect"
 	"strconv"
 	"time"
-	lg "github.com/advantageous/go-logback/logging"
 )
 
 type Priority int
@@ -61,6 +61,9 @@ type Record struct {
 	ContainerIdFull string   `json:"containerIdFull,omitempty" journald:"CONTAINER_ID_FULL"`
 	ContainerName   string   `json:"containerName,omitempty" journald:"CONTAINER_NAME"`
 	ContainerTag    string   `json:"containerTag,omitempty" journald:"CONTAINER_TAG"`
+	AppName         string   `json:"appName,omitempty" journald:"APP_NAME"`
+	AppEnv          string   `json:"appEnv,omitempty" journald:"APP_ENV"`
+	AppVersion      string   `json:"appVersion,omitempty" journald:"SOURCE_VERSION"`
 }
 
 func NewRecord(journal Journal, logger lg.Logger, config *Config) (*Record, error) {
