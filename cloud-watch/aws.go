@@ -75,7 +75,10 @@ func getRegion(client *ec2metadata.EC2Metadata, config *Config, session *awsSess
 			az = findAZ(client)
 			ip = findLocalIp(client)
 
-			name = findInstanceName(config.EC2InstanceId, config.AWSRegion, session)
+			name = "ip"
+			if (config.UseInstanceName) {
+				name = findInstanceName(config.EC2InstanceId, config.AWSRegion, session)
+			}
 			config.LogStreamName = name + "-" + strings.Replace(ip, ".", "-", -1) + "-" + az
 			awsLogger.Infof("LogStreamName was not set so using %s \n", config.LogStreamName)
 		}
@@ -126,7 +129,7 @@ func findAZ(metaClient *ec2metadata.EC2Metadata) string {
 
 func findInstanceName(instanceId string, region string, session *awsSession.Session) string {
 
-	var name = "NO_NAME"
+	var name = "ip"
 	var err error
 
 	ec2Service := ec2.New(session, aws.NewConfig().WithRegion(region))

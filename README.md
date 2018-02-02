@@ -99,7 +99,7 @@ The following configuration settings are supported:
     https://www.freedesktop.org/software/systemd/man/journalctl.html
 
 * `log_stream`: (Optional) The name of the cloudwatch log stream to write logs into. This defaults to
-  the EC2 instance id. Each running instance of this application (along with any other applications
+  ip address of the EC2. Each running instance of this application (along with any other applications
   writing logs into the same log group) must have a unique `log_stream` value. If the given log stream
   doesn't exist then it will be created before writing the first set of journal events.
 
@@ -137,6 +137,8 @@ logs in the system, which is the default behavior.
 
 * `mock-cloud-watch` : (Optional) Used to send logs to a Journal Repeater that just spits out message and priority to the console.
 This is used for development only. 
+
+* `use_instance_name`: (Optional) When `log_stream` is not set, use EC2 name tag for the name of the cloudwatch log stream.
 
 
 If your average log message was 500 bytes, and your used the default setting then assuming the server was generating 

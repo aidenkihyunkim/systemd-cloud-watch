@@ -25,6 +25,7 @@ type Config struct {
 	Filters              []string `hcl:"filters"`
 	AllowedFields        []string `hcl:"fields"`
 	OmitFields           []string `hcl:"omit_fields"`
+	UseInstanceName      bool     `hcl:"use_instance_name"`
 	logPriority          int
 	fields               map[string]struct{}
 	omitFields           map[string]struct{}
