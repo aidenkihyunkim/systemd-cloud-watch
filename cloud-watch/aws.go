@@ -71,7 +71,8 @@ func getRegion(client *ec2metadata.EC2Metadata, config *Config, session *awsSess
 		}
 
 		if config.LogStreamName == "" {
-			var az, name, ip string
+			var name, ip string
+			//var az, name, ip string
 			//az = findAZ(client)
 			ip = findLocalIp(client)
 
